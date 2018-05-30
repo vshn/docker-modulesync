@@ -10,7 +10,7 @@ ModuleSync
 Repository File Sync
 --------------------
 
-Originally a utility script to keep configuration files in sync for Puppet modules,
+Originally, a utility script to keep configuration files in sync for Puppet modules,
 [ModuleSync](https://github.com/voxpupuli/modulesync/) allows you to keep files in
 sync across your many repositories on your Git servers. Pulls your repositories,
 applies and commits changes based on the file templates you prepare, and pushes the
@@ -60,7 +60,7 @@ Development
 To add a new ModuleSync version tag:
 
 1. Add the version number to the [update script](
-    https://github.com/vshn/docker-modulesync/blob/master/update.py#L9), and
+   https://github.com/vshn/docker-modulesync/blob/master/update.py#L7-L10), and
 1. Run `./update.py` and update the Docker build settings as indicated.
 
 Please, run [tox](https://tox.readthedocs.io/) before contributing changes.

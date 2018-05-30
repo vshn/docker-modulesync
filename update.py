@@ -15,7 +15,7 @@ GIT_REPO = 'vshn/docker-modulesync'
 def create_dockerfile(ver):
     """
     Create a Dockerfile in a version subdirectory, taking the main,
-    'bundle install' based, Dockerfile as a template.
+    off-repository install based, Dockerfile as a template.
     """
     print(f"Updating Dockerfile: version {ver} ...")
 
@@ -24,10 +24,14 @@ def create_dockerfile(ver):
 
     with open('Dockerfile', 'r') as dockerfile, \
             open(target_filename, 'w') as target_file:
-        target_conf = dockerfile.read() \
-            .replace(f"COPY Gemfile Gemfile\n", "") \
-            .replace(f"RUN bundle install",
-                     f"RUN gem install modulesync --version {ver}")
+        # replace RUN command (ended by empty line)
+        original = dockerfile.read()
+        start = original.index('\nRUN ')
+        stop = original.index('\n\n', start)
+        target_conf = \
+            original[:start] + \
+            f"\nRUN gem install modulesync --version {ver}" + \
+            original[stop:]
         target_file.write(target_conf)
 
 
