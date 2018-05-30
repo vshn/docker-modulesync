@@ -42,3 +42,5 @@ Development
 -----------
 
 - [Contribute](https://github.com/vshn/docker-modulesync/) (GitHub repository)
+
+Please, run [tox](https://tox.readthedocs.io/) before contributing changes.

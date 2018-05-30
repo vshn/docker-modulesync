@@ -1,0 +1,16 @@
+# Operating system cruft
+.DS_Store
+
+# Editors/IDE configuration & temporary files
+.*.sw[op]
+.idea/
+*.iml
+
+# Ruby Gem build files, bundles & friends
+.bundle/
+Gemfile.lock
+Gemfile.local
+.metadata
+
+# Python test execution files
+.tox/
