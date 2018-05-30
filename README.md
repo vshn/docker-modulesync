@@ -29,18 +29,38 @@ Supported Tags
 Usage
 -----
 
-Add a pseudo-service to your Docker Compose configuration, e.g.
+In a GitLab CI configuration file:
+
+```
+  image: vshn/modulesync
+  script:
+    - msync update
+```
+
+In a Docker Compose file as a pseudo-service:
 
 ```
   modulesync:
     image: vshn/modulesync
     volumes:
-      - .:/var/www/html
+      - .:/app
+```
+
+With Docker on the command line:
+
+```bash
+$ docker run --rm -v "$PWD":/app vshn/modulesync msync update
 ```
 
 Development
 -----------
 
-- [Contribute](https://github.com/vshn/docker-modulesync/) (GitHub repository)
+- [Issue tracker](https://github.com/vshn/docker-modulesync/) (GitHub)
+
+To add a new ModuleSync version tag:
+
+1. Add the version number to the [update script](
+    https://github.com/vshn/docker-modulesync/blob/master/update.py#L9), and
+1. Run `./update.py` and update the Docker build settings as indicated.
 
 Please, run [tox](https://tox.readthedocs.io/) before contributing changes.
