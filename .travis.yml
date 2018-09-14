@@ -21,7 +21,7 @@ stages:
 jobs:
   include:
     - stage: lint python code
-      install: pip install tox-travis
+      install: pip install tox
       script: tox
 
     - stage: verify update was run
