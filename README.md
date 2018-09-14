@@ -17,6 +17,8 @@ sync across your many repositories on your Git servers. Pulls your repositories,
 applies and commits changes based on the file templates you prepare, and pushes the
 changes back to each repo. PR support is included (for GitHub only, as of today).
 
+This Docker image runs ModuleSync with an unprivileged `msync` user in `/app`.
+
 Supported Tags
 --------------
 
