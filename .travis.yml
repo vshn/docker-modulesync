@@ -1,0 +1,30 @@
+---
+language: python
+python: 3.6
+
+sudo: required
+services:
+  - docker
+
+env:
+  - CONTEXT=.
+  - CONTEXT=0.9.0
+
+script:
+  - docker build $CONTEXT
+
+stages:
+  - lint python code
+  - verify update was run
+  - test
+
+jobs:
+  include:
+    - stage: lint python code
+      install: pip install tox-travis
+      script: tox
+
+    - stage: verify update was run
+      script:
+        - ./update.py
+        - test -z "$(git status -s)"
