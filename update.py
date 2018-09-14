@@ -11,6 +11,8 @@ VERSIONS = [
 DOCKER_IMAGE = 'vshn/modulesync'
 GIT_REPO = 'vshn/docker-modulesync'
 
+EMPTY_LINE = '\n\n'
+
 
 def create_dockerfile(ver):
     """
@@ -21,7 +23,6 @@ def create_dockerfile(ver):
 
     build_commands_needle = ' git clone '
     install_command = f" gem install modulesync --version {ver}"
-    empty_line = '\n\n'
 
     makedirs(ver, exist_ok=True)
     target_filename = path.join(ver, 'Dockerfile')
@@ -31,7 +32,7 @@ def create_dockerfile(ver):
             open(target_filename, 'w') as target_file:
         original = dockerfile.read()
         start = original.index(build_commands_needle)
-        stop = original.index(empty_line, start)
+        stop = original.index(EMPTY_LINE, start)
         target_conf = original[:start] + install_command + original[stop:]
         target_file.write(target_conf)
 
@@ -63,8 +64,29 @@ def add_tag_badge_to_readme(ver):
         lines = lines[:anchor] + tag_lines + lines[anchor:]
 
         readme.seek(0)
-        readme.write('\n'.join(lines) + '\n')
         readme.truncate()
+        readme.write('\n'.join(lines) + '\n')
+
+
+def add_version_to_tests(ver):
+    """
+    Ensure all versions of the image are built on Travis CI.
+    """
+    print(f"Update test builds in CI config: {ver} ...")
+
+    context_needle = '\n  - CONTEXT='
+    context_value = f"{context_needle}{ver}"
+
+    with open('.travis.yml', 'r+') as travis_yaml:
+        original = travis_yaml.read()
+        if context_value not in original:
+            start = original.rfind(context_needle)
+            insert = original.index(EMPTY_LINE, start)
+            updated_conf = original[:insert] + context_value + original[insert:]
+
+            travis_yaml.seek(0)
+            travis_yaml.truncate()
+            travis_yaml.write(updated_conf)
 
 
 def main():
@@ -76,6 +98,7 @@ def main():
     for version in VERSIONS:
         create_dockerfile(version)
         add_tag_badge_to_readme(version)
+        add_version_to_tests(version)
 
     print(f"Done. Put the changes under version control now, "
           f"and update your Docker image configuration at "
