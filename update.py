@@ -19,19 +19,20 @@ def create_dockerfile(ver):
     """
     print(f"Updating Dockerfile: version {ver} ...")
 
+    build_commands_needle = ' git clone '
+    install_command = f" gem install modulesync --version {ver}"
+    empty_line = '\n\n'
+
     makedirs(ver, exist_ok=True)
     target_filename = path.join(ver, 'Dockerfile')
 
+    # replace gem build command sequence by gem install command
     with open('Dockerfile', 'r') as dockerfile, \
             open(target_filename, 'w') as target_file:
-        # replace RUN command (ended by empty line)
         original = dockerfile.read()
-        start = original.index('\nRUN ')
-        stop = original.index('\n\n', start)
-        target_conf = \
-            original[:start] + \
-            f"\nRUN gem install modulesync --version {ver}" + \
-            original[stop:]
+        start = original.index(build_commands_needle)
+        stop = original.index(empty_line, start)
+        target_conf = original[:start] + install_command + original[stop:]
         target_file.write(target_conf)
 
 
