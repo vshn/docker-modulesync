@@ -28,6 +28,13 @@ Supported Tags
   https://microbadger.com/images/vshn/modulesync) [![image size](
   https://img.shields.io/microbadger/image-size/vshn/modulesync/latest.svg)](
   https://microbadger.com/images/vshn/modulesync) (based on current GitHub `master`)
+- [`0.10.0`](
+  https://github.com/vshn/docker-modulesync/blob/master/0.10.0/Dockerfile) [![image layers](
+  https://img.shields.io/microbadger/layers/vshn/modulesync/0.10.0.svg)](
+  https://microbadger.com/images/vshn/modulesync) [![image size](
+  https://img.shields.io/microbadger/image-size/vshn/modulesync/0.10.0.svg)](
+  https://microbadger.com/images/vshn/modulesync) ([Ruby Gem v0.10.0](
+  https://rubygems.org/gems/modulesync/versions/0.10.0))
 - [`0.9.0`](
   https://github.com/vshn/docker-modulesync/blob/master/0.9.0/Dockerfile) [![image layers](
   https://img.shields.io/microbadger/layers/vshn/modulesync/0.9.0.svg)](

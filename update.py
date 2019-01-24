@@ -5,8 +5,9 @@ Creates and updates version-based Dockerfile folders.
 from os import makedirs, path
 
 VERSIONS = [
-    # add new versions here
     '0.9.0',
+    '0.10.0',
+    # add new versions here
 ]
 DOCKER_IMAGE = 'vshn/modulesync'
 GIT_REPO = 'vshn/docker-modulesync'
