@@ -13,6 +13,12 @@ GIT_REPO = 'vshn/docker-modulesync'
 
 EMPTY_LINE = '\n\n'
 
+README_TAG_ANCHOR = '  https://microbadger.com/images/vshn/modulesync)' \
+                    ' (based on current GitHub `master`)'
+
+TESTS_CONTEXT_NEEDLE = '  - CONTEXT='
+TESTS_CONTEXT_ANCHOR = '  - CONTEXT=.'
+
 
 def create_dockerfile(ver):
     """
@@ -37,6 +43,42 @@ def create_dockerfile(ver):
         target_file.write(target_conf)
 
 
+def remove_old_badges_from_readme():
+    """
+    Remove all version tag badges from the README.
+    """
+    print('Clearing old tags from README ...')
+
+    with open('README.md', 'r+') as readme:
+        lines = readme.read().splitlines()
+
+        anchor = lines.index(README_TAG_ANCHOR) + 1
+        next_blank_line = lines.index('', anchor)
+        lines = lines[:anchor] + lines[next_blank_line:]
+
+        readme.seek(0)
+        readme.truncate()
+        readme.write('\n'.join(lines) + '\n')
+
+
+def remove_old_versions_from_tests():
+    """
+    Remove all version ENV values from the test setup.
+    """
+    print('Clearing old test setup from CI config ...')
+
+    with open('.travis.yml', 'r+') as file:
+        lines = file.read().splitlines()
+
+        anchor = lines.index(TESTS_CONTEXT_ANCHOR) + 1
+        next_blank_line = lines.index('', anchor)
+        lines = lines[:anchor] + lines[next_blank_line:]
+
+        file.seek(0)
+        file.truncate()
+        file.write('\n'.join(lines) + '\n')
+
+
 def add_tag_badge_to_readme(ver):
     """
     Add links of supported tags to the README.
@@ -44,28 +86,32 @@ def add_tag_badge_to_readme(ver):
     print(f"Updating README: tag {ver} ...")
 
     dockerfile_url = f"https://github.com/{GIT_REPO}/blob/master/{ver}/Dockerfile"
-    imagelayers_badge = f"https://img.shields.io/imagelayers/layers/" \
+    imagelayers_badge = f"https://img.shields.io/microbadger/layers/" \
                         f"{DOCKER_IMAGE}/{ver}.svg"
-    imagelayers_url = f"https://imagelayers.io/?images={DOCKER_IMAGE}:{ver}"
+    imagelayers_url = f"https://microbadger.com/images/{DOCKER_IMAGE}"
+    imagesize_badge = f"https://img.shields.io/microbadger/image-size/" \
+                      f"{DOCKER_IMAGE}/{ver}.svg"
+    imagesize_url = imagelayers_url
     rubygem_url = f"https://rubygems.org/gems/modulesync/versions/{ver}"
     tag_lines = [
-        f"- [`{ver}`]({dockerfile_url}) [![Image Layers](",
-        f"  {imagelayers_badge})]({imagelayers_url}",
-        f"  ) ([Ruby Gem v{ver}]({rubygem_url}))",
+        f"- [`{ver}`](",
+        f"  {dockerfile_url}) [![image layers](",
+        f"  {imagelayers_badge})](",
+        f"  {imagelayers_url}) [![image size](",
+        f"  {imagesize_badge})](",
+        f"  {imagesize_url}) ([Ruby Gem v{ver}](",
+        f"  {rubygem_url}))",
     ]
-    tag_anchor = f"  ) (based on current GitHub `master`)"
 
-    with open('README.md', 'r+') as readme:
-        lines = readme.read().splitlines()
-        for line in tag_lines:
-            if line in lines:
-                lines.remove(line)
-        anchor = lines.index(tag_anchor) + 1
+    with open('README.md', 'r+') as file:
+        lines = file.read().splitlines()
+
+        anchor = lines.index(README_TAG_ANCHOR) + 1
         lines = lines[:anchor] + tag_lines + lines[anchor:]
 
-        readme.seek(0)
-        readme.truncate()
-        readme.write('\n'.join(lines) + '\n')
+        file.seek(0)
+        file.truncate()
+        file.write('\n'.join(lines) + '\n')
 
 
 def add_version_to_tests(ver):
@@ -74,19 +120,17 @@ def add_version_to_tests(ver):
     """
     print(f"Update test builds in CI config: {ver} ...")
 
-    context_needle = '\n  - CONTEXT='
-    context_value = f"{context_needle}{ver}"
+    context_line = f"{TESTS_CONTEXT_NEEDLE}{ver}"
 
-    with open('.travis.yml', 'r+') as travis_yaml:
-        original = travis_yaml.read()
-        if context_value not in original:
-            start = original.rfind(context_needle)
-            insert = original.index(EMPTY_LINE, start)
-            updated_conf = original[:insert] + context_value + original[insert:]
+    with open('.travis.yml', 'r+') as file:
+        lines = file.read().splitlines()
 
-            travis_yaml.seek(0)
-            travis_yaml.truncate()
-            travis_yaml.write(updated_conf)
+        anchor = lines.index(TESTS_CONTEXT_ANCHOR) + 1
+        lines = lines[:anchor] + [context_line] + lines[anchor:]
+
+        file.seek(0)
+        file.truncate()
+        file.write('\n'.join(lines) + '\n')
 
 
 def main():
@@ -95,6 +139,9 @@ def main():
     subdirectories (with ModuleSync version numbers), replacing the 'bundle
     install' by Ruby Gem installs. Also update the README file.
     """
+    remove_old_badges_from_readme()
+    remove_old_versions_from_tests()
+
     for version in VERSIONS:
         create_dockerfile(version)
         add_tag_badge_to_readme(version)

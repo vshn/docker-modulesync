@@ -22,12 +22,19 @@ This Docker image runs ModuleSync with an unprivileged `msync` user in `/app`.
 Supported Tags
 --------------
 
-- [`latest`](https://github.com/vshn/docker-modulesync/blob/master/Dockerfile) [![Image Layers](
-  https://img.shields.io/imagelayers/layers/vshn/modulesync/latest.svg)](https://imagelayers.io/?images=vshn/modulesync:latest
-  ) (based on current GitHub `master`)
-- [`0.9.0`](https://github.com/vshn/docker-modulesync/blob/master/0.9.0/Dockerfile) [![Image Layers](
-  https://img.shields.io/imagelayers/layers/vshn/modulesync/0.9.0.svg)](https://imagelayers.io/?images=vshn/modulesync:0.9.0
-  ) ([Ruby Gem v0.9.0](https://rubygems.org/gems/modulesync/versions/0.9.0))
+- [`latest`](
+  https://github.com/vshn/docker-modulesync/blob/master/Dockerfile) [![image layers](
+  https://img.shields.io/microbadger/layers/vshn/modulesync/latest.svg)](
+  https://microbadger.com/images/vshn/modulesync) [![image size](
+  https://img.shields.io/microbadger/image-size/vshn/modulesync/latest.svg)](
+  https://microbadger.com/images/vshn/modulesync) (based on current GitHub `master`)
+- [`0.9.0`](
+  https://github.com/vshn/docker-modulesync/blob/master/0.9.0/Dockerfile) [![image layers](
+  https://img.shields.io/microbadger/layers/vshn/modulesync/0.9.0.svg)](
+  https://microbadger.com/images/vshn/modulesync) [![image size](
+  https://img.shields.io/microbadger/image-size/vshn/modulesync/0.9.0.svg)](
+  https://microbadger.com/images/vshn/modulesync) ([Ruby Gem v0.9.0](
+  https://rubygems.org/gems/modulesync/versions/0.9.0))
 
 Usage
 -----
