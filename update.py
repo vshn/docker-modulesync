@@ -14,8 +14,7 @@ GIT_REPO = 'vshn/docker-modulesync'
 
 EMPTY_LINE = '\n\n'
 
-README_TAG_ANCHOR = '  https://microbadger.com/images/vshn/modulesync)' \
-                    ' (based on current GitHub `master`)'
+README_TAG_ANCHOR = '  https://github.com/voxpupuli/modulesync)'
 
 TESTS_CONTEXT_NEEDLE = '  - CONTEXT='
 TESTS_CONTEXT_ANCHOR = '  - CONTEXT=.'
@@ -86,6 +85,8 @@ def add_tag_badge_to_readme(ver):
     """
     print(f"Updating README: tag {ver} ...")
 
+    dockerfile_badge = f"https://img.shields.io/badge/{ver}-blue.svg" \
+                       f"?colorA=22313f&colorB=4a637b&logo=docker"
     dockerfile_url = f"https://github.com/{GIT_REPO}/blob/master/{ver}/Dockerfile"
     imagelayers_badge = f"https://img.shields.io/microbadger/layers/" \
                         f"{DOCKER_IMAGE}/{ver}.svg"
@@ -93,15 +94,19 @@ def add_tag_badge_to_readme(ver):
     imagesize_badge = f"https://img.shields.io/microbadger/image-size/" \
                       f"{DOCKER_IMAGE}/{ver}.svg"
     imagesize_url = imagelayers_url
+    rubygem_badge = f"https://img.shields.io/badge/Gem-{ver}-red.svg" \
+                    f"?colorA=ff919f&colorB=9a9b9c&logo=ruby"
     rubygem_url = f"https://rubygems.org/gems/modulesync/versions/{ver}"
     tag_lines = [
-        f"- [`{ver}`](",
+        f"- [![{ver}](",
+        f"  {dockerfile_badge})](",
         f"  {dockerfile_url}) [![image layers](",
         f"  {imagelayers_badge})](",
         f"  {imagelayers_url}) [![image size](",
         f"  {imagesize_badge})](",
-        f"  {imagesize_url}) ([Ruby Gem v{ver}](",
-        f"  {rubygem_url}))",
+        f"  {imagesize_url}) [![based on](",
+        f"  {rubygem_badge})](",
+        f"  {rubygem_url})",
     ]
 
     with open('README.md', 'r+') as file:
