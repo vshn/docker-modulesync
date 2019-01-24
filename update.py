@@ -124,7 +124,7 @@ def add_version_to_tests(ver):
     """
     Ensure all versions of the image are built on Travis CI.
     """
-    print(f"Update test builds in CI config: {ver} ...")
+    print(f"Updating CI config: test build for {ver} ...")
 
     context_line = f"{TESTS_CONTEXT_NEEDLE}{ver}"
 
