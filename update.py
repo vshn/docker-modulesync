@@ -27,8 +27,15 @@ def create_dockerfile(ver):
     """
     print(f"Updating Dockerfile: version {ver} ...")
 
-    build_commands_needle = ' git clone '
-    install_command = f" gem install modulesync --version {ver}"
+    build_commands_needle = ' && apt-get update '
+    install_commands = [
+        f" && apt-get update \\",
+        f" && apt-get install -y build-essential \\",
+        f" && gem install modulesync --version {ver} \\",
+        f" && apt-get purge -y build-essential \\",
+        f" && apt-get autoremove --purge -y \\",
+        f" && apt-get clean",
+    ]
 
     makedirs(ver, exist_ok=True)
     target_filename = path.join(ver, 'Dockerfile')
@@ -39,7 +46,11 @@ def create_dockerfile(ver):
         original = dockerfile.read()
         start = original.index(build_commands_needle)
         stop = original.index(EMPTY_LINE, start)
-        target_conf = original[:start] + install_command + original[stop:]
+        target_conf = (
+            original[:start] +
+            '\n'.join(install_commands) +
+            original[stop:]
+        )
         target_file.write(target_conf)
 
 
