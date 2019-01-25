@@ -10,6 +10,7 @@ VERSIONS = [
     # add new versions here
 ]
 DOCKER_IMAGE = 'vshn/modulesync'
+DOCKERHUB_USER = 'vshn'
 GIT_REPO = 'vshn/docker-modulesync'
 
 EMPTY_LINE = '\n\n'
@@ -166,8 +167,8 @@ def main():
 
     print(f"Done. Put the changes under version control now, "
           f"and update your Docker image configuration at "
-          f"https://hub.docker.com/r/{DOCKER_IMAGE}/~/settings/automated-builds/. "
-          f"Thank you!")
+          f"https://cloud.docker.com/u/{DOCKERHUB_USER}/repository/docker/"
+          f"{DOCKER_IMAGE}/hubbuilds. Thank you!")
 
 
 if __name__ == '__main__':
