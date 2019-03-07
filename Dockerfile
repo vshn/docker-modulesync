@@ -11,7 +11,7 @@ RUN adduser --disabled-password --gecos '' msync \
  && cd modulesync \
  && gem build modulesync.gemspec \
  && gem install --no-document modulesync-*.gem \
- && apt-get purge -y build-essential git \
+ && apt-get purge -y build-essential \
  && apt-get autoremove --purge -y \
  && apt-get clean \
  && cd .. \
