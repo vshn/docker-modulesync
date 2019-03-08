@@ -31,7 +31,7 @@ def create_dockerfile(ver):
     build_commands_needle = ' && apt-get update '
     install_commands = [
         f" && apt-get update \\",
-        f" && apt-get install -y build-essential \\",
+        f" && apt-get install -y build-essential git \\",
         f" && gem install modulesync --version {ver} \\",
         f" && apt-get purge -y build-essential \\",
         f" && apt-get autoremove --purge -y \\",
