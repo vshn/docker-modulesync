@@ -24,29 +24,23 @@ Supported Tags
 
 - [![latest](
   https://img.shields.io/badge/latest-blue.svg?colorA=22313f&colorB=4a637b&logo=docker)](
-  https://github.com/vshn/docker-modulesync/blob/master/Dockerfile) [![image layers](
-  https://img.shields.io/microbadger/layers/vshn/modulesync/latest.svg)](
-  https://microbadger.com/images/vshn/modulesync) [![image size](
-  https://img.shields.io/microbadger/image-size/vshn/modulesync/latest.svg)](
-  https://microbadger.com/images/vshn/modulesync) [![based on](
+  https://github.com/vshn/docker-modulesync/blob/master/Dockerfile) [![size/layers](
+  https://images.microbadger.com/badges/image/vshn/modulesync:latest.svg)](
+  https://microbadger.com/images/vshn/modulesync:latest) [![based on](
   https://img.shields.io/badge/Git-master-grey.svg?colorA=5a5b5c&colorB=9a9b9c&logo=github)](
   https://github.com/voxpupuli/modulesync)
 - [![0.10.0](
   https://img.shields.io/badge/0.10.0-blue.svg?colorA=22313f&colorB=4a637b&logo=docker)](
-  https://github.com/vshn/docker-modulesync/blob/master/0.10.0/Dockerfile) [![image layers](
-  https://img.shields.io/microbadger/layers/vshn/modulesync/0.10.0.svg)](
-  https://microbadger.com/images/vshn/modulesync) [![image size](
-  https://img.shields.io/microbadger/image-size/vshn/modulesync/0.10.0.svg)](
-  https://microbadger.com/images/vshn/modulesync) [![based on](
+  https://github.com/vshn/docker-modulesync/blob/master/0.10.0/Dockerfile) [![size/layers](
+  https://images.microbadger.com/badges/image/vshn/modulesync:0.10.0.svg)](
+  https://microbadger.com/images/vshn/modulesync:0.10.0) [![based on](
   https://img.shields.io/badge/Gem-0.10.0-red.svg?colorA=ff919f&colorB=9a9b9c&logo=ruby)](
   https://rubygems.org/gems/modulesync/versions/0.10.0)
 - [![0.9.0](
   https://img.shields.io/badge/0.9.0-blue.svg?colorA=22313f&colorB=4a637b&logo=docker)](
-  https://github.com/vshn/docker-modulesync/blob/master/0.9.0/Dockerfile) [![image layers](
-  https://img.shields.io/microbadger/layers/vshn/modulesync/0.9.0.svg)](
-  https://microbadger.com/images/vshn/modulesync) [![image size](
-  https://img.shields.io/microbadger/image-size/vshn/modulesync/0.9.0.svg)](
-  https://microbadger.com/images/vshn/modulesync) [![based on](
+  https://github.com/vshn/docker-modulesync/blob/master/0.9.0/Dockerfile) [![size/layers](
+  https://images.microbadger.com/badges/image/vshn/modulesync:0.9.0.svg)](
+  https://microbadger.com/images/vshn/modulesync:0.9.0) [![based on](
   https://img.shields.io/badge/Gem-0.9.0-red.svg?colorA=ff919f&colorB=9a9b9c&logo=ruby)](
   https://rubygems.org/gems/modulesync/versions/0.9.0)
 
