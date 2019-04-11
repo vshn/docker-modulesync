@@ -6,7 +6,7 @@ ModuleSync
 [![Build Status](https://img.shields.io/travis/vshn/docker-modulesync/master.svg)](https://travis-ci.org/vshn/docker-modulesync
 ) [![GitHub issues](https://img.shields.io/github/issues-raw/vshn/docker-modulesync.svg)](https://github.com/vshn/docker-modulesync/issues
 ) [![GitHub PRs](https://img.shields.io/github/issues-pr-raw/vshn/docker-modulesync.svg)](https://github.com/vshn/docker-modulesync/pulls
-) [![MIT License](https://img.shields.io/github/license/vshn/docker-modulesync.svg)](https://github.com/vshn/docker-modulesync/blob/master/LICENSE)
+) [![License](https://img.shields.io/github/license/vshn/docker-modulesync.svg)](https://github.com/vshn/docker-modulesync/blob/master/LICENSE)
 
 Repository File Sync
 --------------------
