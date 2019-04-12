@@ -100,23 +100,18 @@ def add_tag_badge_to_readme(ver):
     dockerfile_badge = f"https://img.shields.io/badge/{ver}-blue.svg" \
                        f"?colorA=22313f&colorB=4a637b&logo=docker"
     dockerfile_url = f"https://github.com/{GIT_REPO}/blob/master/{ver}/Dockerfile"
-    imagelayers_badge = f"https://img.shields.io/microbadger/layers/" \
-                        f"{DOCKER_IMAGE}/{ver}.svg"
-    imagelayers_url = f"https://microbadger.com/images/{DOCKER_IMAGE}"
-    imagesize_badge = f"https://img.shields.io/microbadger/image-size/" \
-                      f"{DOCKER_IMAGE}/{ver}.svg"
-    imagesize_url = imagelayers_url
+    sizelayers_badge = f"https://images.microbadger.com/badges/image/" \
+                       f"{DOCKER_IMAGE}:{ver}.svg"
+    sizelayers_url = f"https://microbadger.com/images/{DOCKER_IMAGE}:{ver}"
     rubygem_badge = f"https://img.shields.io/badge/Gem-{ver}-red.svg" \
                     f"?colorA=ff919f&colorB=9a9b9c&logo=ruby"
     rubygem_url = f"https://rubygems.org/gems/modulesync/versions/{ver}"
     tag_lines = [
         f"- [![{ver}](",
         f"  {dockerfile_badge})](",
-        f"  {dockerfile_url}) [![image layers](",
-        f"  {imagelayers_badge})](",
-        f"  {imagelayers_url}) [![image size](",
-        f"  {imagesize_badge})](",
-        f"  {imagesize_url}) [![based on](",
+        f"  {dockerfile_url}) [![size/layers](",
+        f"  {sizelayers_badge})](",
+        f"  {sizelayers_url}) [![based on](",
         f"  {rubygem_badge})](",
         f"  {rubygem_url})",
     ]
