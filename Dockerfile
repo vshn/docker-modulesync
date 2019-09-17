@@ -7,7 +7,7 @@ WORKDIR /app
 RUN adduser --disabled-password --gecos '' msync \
  && apt-get update \
  && apt-get install -y build-essential git \
- && git clone --depth=1 https://github.com/voxpupuli/modulesync.git \
+ && git clone --depth=1 https://github.com/vshn/modulesync.git --branch fix-global-override \
  && cd modulesync \
  && gem build modulesync.gemspec \
  && gem install --no-document modulesync-*.gem \
