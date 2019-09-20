@@ -6,7 +6,9 @@ WORKDIR /app
 
 RUN adduser --disabled-password --gecos '' msync \
  && apt-get update \
- && apt-get install -y build-essential git \
+ && apt-get install -y --no-install-recommends \
+      build-essential \
+      git \
  && git clone --depth=1 https://github.com/voxpupuli/modulesync.git \
  && cd modulesync \
  && gem build modulesync.gemspec \
@@ -14,6 +16,7 @@ RUN adduser --disabled-password --gecos '' msync \
  && apt-get purge -y build-essential \
  && apt-get autoremove --purge -y \
  && apt-get clean \
+ && rm -rf /var/lib/apt/lists/* \
  && cd .. \
  && rm -rf modulesync
 
