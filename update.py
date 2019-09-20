@@ -7,6 +7,7 @@ from os import makedirs, path
 VERSIONS = [
     '0.9.0',
     '0.10.0',
+    '1.0.0',
     # add new versions here
 ]
 DOCKER_IMAGE = 'vshn/modulesync'

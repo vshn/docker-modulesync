@@ -29,6 +29,13 @@ Supported Tags
   https://microbadger.com/images/vshn/modulesync:latest) [![based on](
   https://img.shields.io/badge/Git-master-grey.svg?colorA=5a5b5c&colorB=9a9b9c&logo=github)](
   https://github.com/voxpupuli/modulesync)
+- [![1.0.0](
+  https://img.shields.io/badge/1.0.0-blue.svg?colorA=22313f&colorB=4a637b&logo=docker)](
+  https://github.com/vshn/docker-modulesync/blob/master/1.0.0/Dockerfile) [![size/layers](
+  https://images.microbadger.com/badges/image/vshn/modulesync:1.0.0.svg)](
+  https://microbadger.com/images/vshn/modulesync:1.0.0) [![based on](
+  https://img.shields.io/badge/Gem-1.0.0-red.svg?colorA=ff919f&colorB=9a9b9c&logo=ruby)](
+  https://rubygems.org/gems/modulesync/versions/1.0.0)
 - [![0.10.0](
   https://img.shields.io/badge/0.10.0-blue.svg?colorA=22313f&colorB=4a637b&logo=docker)](
   https://github.com/vshn/docker-modulesync/blob/master/0.10.0/Dockerfile) [![size/layers](
