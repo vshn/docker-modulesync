@@ -8,6 +8,7 @@ services:
 
 env:
   - CONTEXT=.
+  - CONTEXT=1.0.0
   - CONTEXT=0.10.0
   - CONTEXT=0.9.0
 
