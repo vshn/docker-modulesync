@@ -8,6 +8,9 @@ VERSIONS = [
     '0.9.0',
     '0.10.0',
     '1.0.0',
+    '1.1.0',
+    '1.2.0',
+    '1.3.0',
     # add new versions here
 ]
 DOCKER_IMAGE = 'vshn/modulesync'
@@ -31,15 +34,15 @@ def create_dockerfile(ver):
 
     build_commands_needle = ' && apt-get update '
     install_commands = [
-        f" && apt-get update \\",
-        f" && apt-get install -y --no-install-recommends \\",
-        f"      build-essential \\",
-        f"      git \\",
+        " && apt-get update \\",
+        " && apt-get install -y --no-install-recommends \\",
+        "      build-essential \\",
+        "      git \\",
         f" && gem install modulesync --version {ver} \\",
-        f" && apt-get purge -y build-essential \\",
-        f" && apt-get autoremove --purge -y \\",
-        f" && apt-get clean \\",
-        f" && rm -rf /var/lib/apt/lists/*",
+        " && apt-get purge -y build-essential \\",
+        " && apt-get autoremove --purge -y \\",
+        " && apt-get clean \\",
+        " && rm -rf /var/lib/apt/lists/*",
     ]
 
     makedirs(ver, exist_ok=True)
@@ -102,13 +105,13 @@ def add_tag_badge_to_readme(ver):
     print(f"Updating README: tag {ver} ...")
 
     dockerfile_badge = f"https://img.shields.io/badge/{ver}-blue.svg" \
-                       f"?colorA=22313f&colorB=4a637b&logo=docker"
+                       "?colorA=22313f&colorB=4a637b&logo=docker"
     dockerfile_url = f"https://github.com/{GIT_REPO}/blob/master/{ver}/Dockerfile"
-    sizelayers_badge = f"https://images.microbadger.com/badges/image/" \
+    sizelayers_badge = "https://images.microbadger.com/badges/image/" \
                        f"{DOCKER_IMAGE}:{ver}.svg"
     sizelayers_url = f"https://microbadger.com/images/{DOCKER_IMAGE}:{ver}"
     rubygem_badge = f"https://img.shields.io/badge/Gem-{ver}-red.svg" \
-                    f"?colorA=ff919f&colorB=9a9b9c&logo=ruby"
+                    "?colorA=ff919f&colorB=9a9b9c&logo=ruby"
     rubygem_url = f"https://rubygems.org/gems/modulesync/versions/{ver}"
     tag_lines = [
         f"- [![{ver}](",
@@ -164,8 +167,8 @@ def main():
         add_tag_badge_to_readme(version)
         add_version_to_tests(version)
 
-    print(f"Done. Put the changes under version control now, "
-          f"and update your Docker image configuration at "
+    print("Done. Put the changes under version control now, "
+          "and update your Docker image configuration at "
           f"https://cloud.docker.com/u/{DOCKERHUB_USER}/repository/docker/"
           f"{DOCKER_IMAGE}/hubbuilds. Thank you!")
 
