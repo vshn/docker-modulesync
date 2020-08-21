@@ -11,6 +11,7 @@ VERSIONS = [
     '1.1.0',
     '1.2.0',
     '1.3.0',
+    '2.0.0',
     # add new versions here
 ]
 DOCKER_IMAGE = 'vshn/modulesync'
