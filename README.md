@@ -15,9 +15,13 @@ Originally, a utility script to keep configuration files in sync for Puppet modu
 [ModuleSync](https://github.com/voxpupuli/modulesync/) allows you to keep files in
 sync across your many repositories on your Git servers. Pulls your repositories,
 applies and commits changes based on the file templates you prepare, and pushes the
-changes back to each repo. PR support is included (for GitHub only, as of today).
+changes back to each repo. Support for creating GitHub PRs and GitLab MRs (since v2.0.0)
+in an automated fashion is included.
 
 This Docker image runs ModuleSync with an unprivileged `msync` user in `/app`.
+
+See [Concierge](https://github.com/vshn/docker-concierge/) if you want to sync
+multiple configurations from a single configuration repository.
 
 Supported Tags
 --------------
@@ -29,6 +33,13 @@ Supported Tags
   https://microbadger.com/images/vshn/modulesync:latest) [![based on](
   https://img.shields.io/badge/Git-master-grey.svg?colorA=5a5b5c&colorB=9a9b9c&logo=github)](
   https://github.com/voxpupuli/modulesync)
+- [![2.0.0](
+  https://img.shields.io/badge/2.0.0-blue.svg?colorA=22313f&colorB=4a637b&logo=docker)](
+  https://github.com/vshn/docker-modulesync/blob/master/2.0.0/Dockerfile) [![size/layers](
+  https://images.microbadger.com/badges/image/vshn/modulesync:2.0.0.svg)](
+  https://microbadger.com/images/vshn/modulesync:2.0.0) [![based on](
+  https://img.shields.io/badge/Gem-2.0.0-red.svg?colorA=ff919f&colorB=9a9b9c&logo=ruby)](
+  https://rubygems.org/gems/modulesync/versions/2.0.0)
 - [![1.3.0](
   https://img.shields.io/badge/1.3.0-blue.svg?colorA=22313f&colorB=4a637b&logo=docker)](
   https://github.com/vshn/docker-modulesync/blob/master/1.3.0/Dockerfile) [![size/layers](
