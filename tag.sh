@@ -1,6 +1,6 @@
 #!/bin/sh
 
-tag="v$(awk -F'=' '/ENV MODULESYNC_VERSION/{ print $2 }' Dockerfile)"
+tag="v$(awk -F'"' '/ENV MODULESYNC_VERSION/{ print $2 }' Dockerfile)"
 git tag -s "${tag}" -m "Release ${tag}"
 
 echo "---> Tagged as ${tag}"
