@@ -1,26 +1,17 @@
-FROM ruby:2.7-slim
-
-LABEL maintainer="VSHN AG <tech@vshn.ch>"
-
+FROM docker.io/library/ruby:3.3-slim
 WORKDIR /app
 
-RUN adduser --disabled-password --gecos '' msync \
- && apt-get update \
- && apt-get install -y --no-install-recommends \
-      build-essential \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
       git \
-      ssh \
- && git clone --depth=1 https://github.com/voxpupuli/modulesync.git \
- && cd modulesync \
- && gem build modulesync.gemspec \
- && gem install --no-document modulesync-*.gem \
- && apt-get purge -y build-essential \
- && apt-get autoremove --purge -y \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/* \
- && cd .. \
- && rm -rf modulesync
+      openssh-client && \
+    apt-get clean all && \
+    rm -rf /var/lib/apt/lists/* && \
+    adduser --disabled-password --gecos '' msync
+
+# renovate: datasource=rubygems depName=modulesync versioning=ruby
+ENV MODULESYNC_VERSION="3.2.0"
+RUN gem install modulesync --version="$MODULESYNC_VERSION"
 
 USER msync
-
-CMD ["msync"]
+CMD ["msync", "help"]
