@@ -1,4 +1,4 @@
-FROM docker.io/library/ruby:3.3-slim
+FROM docker.io/library/ruby:3.4-slim
 WORKDIR /app
 
 RUN apt-get update && \
