@@ -10,7 +10,7 @@ RUN apt-get update && \
     adduser --disabled-password --gecos '' msync
 
 # renovate: datasource=rubygems depName=modulesync versioning=ruby
-ENV MODULESYNC_VERSION="3.2.0"
+ENV MODULESYNC_VERSION="4.6.0"
 RUN gem install modulesync --version="$MODULESYNC_VERSION"
 
 USER msync
